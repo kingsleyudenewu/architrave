@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Roles;
+use App\Model\Role;
 use Illuminate\Http\Request;
 
-class RolesController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,7 +44,7 @@ class RolesController extends Controller
      * @param  \App\Model\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function show(Roles $roles)
+    public function show(Role $role)
     {
         //
     }
@@ -55,7 +55,7 @@ class RolesController extends Controller
      * @param  \App\Model\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function edit(Roles $roles)
+    public function edit(Role $role)
     {
         //
     }
@@ -67,7 +67,7 @@ class RolesController extends Controller
      * @param  \App\Model\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Roles $roles)
+    public function update(Request $request, Role $role)
     {
         //
     }
@@ -78,7 +78,7 @@ class RolesController extends Controller
      * @param  \App\Model\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Roles $roles)
+    public function destroy(Role $role)
     {
         //
     }
