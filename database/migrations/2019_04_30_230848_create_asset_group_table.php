@@ -15,6 +15,8 @@ class CreateAssetGroupTable extends Migration
     {
         Schema::create('asset_group', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('group_id')->unsigned();
+            $table->integer('asset_id')->unsigned();
             $table->timestamps();
         });
     }
