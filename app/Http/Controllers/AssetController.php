@@ -20,6 +20,9 @@ class AssetController extends Controller
         try{
             //Check if the user is an Admin or Not
             $getUserRole = User::with('roles')->where('id', $request->user()->id)->first();
+            if(!$getUserRole){
+                return $this->errorResponse('Invalid user');
+            }
 
             if($getUserRole->roles[0]->name == 'Admin'){
                 $getAssets = User::with(['groups', 'groups.assets'])->get();
