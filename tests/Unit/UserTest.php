@@ -19,4 +19,17 @@ class UserTest extends TestCase
             'message' => 'success'
         ]);
     }
+
+    /** @test */
+    public function unauthenticated_user_cannot_view_asset()
+    {
+        $response = $this->withHeaders([
+            'Content-Type' => 'application/json'
+        ])->json('GET', route('assets.index'));
+        $response->assertJsonFragment([
+            'message' => 'Unauthenticated.'
+        ]);
+    }
+
+
 }
