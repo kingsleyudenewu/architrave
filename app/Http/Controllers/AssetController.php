@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Asset;
+use App\Model\User;
 use Illuminate\Http\Request;
 
 class AssetController extends Controller
@@ -12,74 +13,18 @@ class AssetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        try{
+            //Check if the user is an Admin or Not
+            $getUserRole = User::with('roles')->where('id', $request->user()->id)->first();
+
+            $getAssets = Asset::with(['groups'])->get();
+        }
+        catch (\Exception $exception){
+            return $this->errorResponse('Operation failed');
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Model\Asset  $asset
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Asset $asset)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Model\Asset  $asset
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Asset $asset)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Asset  $asset
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Asset $asset)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Model\Asset  $asset
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Asset $asset)
-    {
-        //
-    }
 }
